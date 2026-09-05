@@ -114,6 +114,9 @@ effort="${parsed[10],,}"
 repo_owner="${parsed[11]}"
 repo_name="${parsed[12]}"
 git_wt="${parsed[13]}"
+# Branch: workspace.git_worktree is only set inside a linked worktree, so ask git directly.
+git_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+[ -z "$git_branch" ] && git_branch="$git_wt"
 pr_num="${parsed[14]}"
 pr_url="${parsed[15]}"
 pr_state="${parsed[16],,}"
@@ -210,7 +213,7 @@ fi
 repo_block=""
 if [ -n "$repo_name" ]; then
   inner="${SEC}${repo_owner}/${repo_name}${R}"
-  [ -n "$git_wt" ] && inner="${inner}${PRI}/${git_wt}${R}"
+  [ -n "$git_branch" ] && inner="${inner}${PRI}/${git_branch}${R}"
   if [ -n "$pr_link" ]; then
     repo_block=" ${W}[${R}${inner} ${pr_link}${W}]${R}"
   else
