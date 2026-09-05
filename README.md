@@ -5,7 +5,7 @@ A custom status line for Claude Code. It reads the JSON that Claude Code sends o
 ## A line at a glance
 
 ```
-[~/project] [█████████───────────48%|480K/1M|350K] [Exp:15:48] [Sep4 17:40|S:20% 18:00|W:2% TH00] [Claude Opus 4.8 ◑] [owner/repo/worktree #405]
+[~/project] [█████████───────────48%|480K/1M|350K] [Sep4 17:40|Exp:19:16] [S:20% 18:00|W:2% TH00] [Claude Opus 4.8 ◑] [owner/repo/worktree #405]
 ```
 
 Every session picks its own two colors from a hash of the session id, so two sessions side by side never look alike. The line uses those two colors throughout: a lighter one and a darker one.
@@ -14,9 +14,8 @@ Every session picks its own two colors from a hash of the session id, so two ses
 
 - **Folder** (`~/project`): the current directory name.
 - **Context** (`█████───── 48%|480K/1M|350K`): a 20-character bar, the percent of the context window in use, the used and maximum tokens, and the tokens left before auto-compact. The remaining figure counts down to 83 percent, where auto-compact fires, and it turns red past 60 percent of the window.
-- **Cache expiry** (`Exp:15:48`): the local 24-hour time when the prompt cache goes cold. The status line does not tick while idle, so read this against your clock rather than as a live countdown. `--:--` means the payload carried no expiry.
-- **Date and time** (`Sep4 17:40`): the current date and 24-hour time.
-- **Rate limits** (`S:20% 18:00|W:2% TH00`): `S:` is the 5-hour window, `W:` is the 7-day window. Each shows the percent used and the reset time. The percent uses a traffic-light color: green, yellow, orange, then red as it climbs.
+- **Date, time, and cache expiry** (`Sep4 17:40|Exp:19:16`): the current date and 24-hour time, then `Exp:`, the local 24-hour time when the prompt cache goes cold. The status line does not tick while idle, so read `Exp:` against your clock rather than as a live countdown. `--:--` means the payload carried no expiry.
+- **Rate limits** (`S:20% 18:00|W:2% TH00`): their own group. `S:` is the 5-hour window, `W:` is the 7-day window. Each shows the percent used and the reset time. The percent uses a traffic-light color: green under 25, yellow to 49, orange to 74, then red at 75 and up.
 - **Model and effort** (`Claude Opus 4.8 ◑`): the model name, colored per family (Opus, Fable, Sonnet, Haiku), and the reasoning effort as a filling circle: `◌` low, `◔` medium, `◑` high, `◕` xhigh, `●` max. An effort-less model shows `◌`.
 - **Repository** (`owner/repo/worktree #405`): the remote owner and repo name, then the git worktree name when you are in one, then the pull-request number when the branch has a PR.
 

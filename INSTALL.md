@@ -13,7 +13,7 @@ Two files:
 
 ## What it shows
 
-`[~/folder] [ctx bar %|used/max|remaining-to-83%] [Exp:HH:MM] [date time|S:5h% reset|W:week% reset] [Claude <model> <effort>] [owner/name/worktree #PR]`
+`[~/folder] [ctx bar %|used/max|remaining-to-83%] [date time|Exp:HH:MM] [S:5h% reset|W:week% reset] [Claude <model> <effort>] [owner/name/worktree #PR]`
 
 - Context bar plus tokens remaining until auto-compact (83%).
 - `Exp:` = prompt-cache expiry, local 24-hour time. It reflects the last render, so read it against your clock. `--:--` means no cache expiry in the payload.
