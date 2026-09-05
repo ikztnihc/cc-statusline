@@ -53,8 +53,8 @@ tl_color() {
   local pct; pct=$(printf "%.0f" "${1:-0}" 2>/dev/null || echo "0")
   if   [ "$pct" -lt 25 ]; then printf "\x1b[32m"
   elif [ "$pct" -lt 50 ]; then printf "\x1b[33m"
-  elif [ "$pct" -lt 75 ]; then printf "\x1b[38;5;208m"
-  else                         printf "\x1b[31m"
+  elif [ "$pct" -lt 75 ]; then printf "\x1b[38;2;255;100;0m"
+  else                         printf "\x1b[38;2;210;0;0m"
   fi
 }
 
